@@ -28,31 +28,50 @@ elif difficulty == "3":
 
 else:
     print("Invalid choice! Please restart the game.")
+    exit()
 
 attempts = 0
 guessed_correctly = False
+wrong_guesses = 0
 
 
 while attempts < max_attempts and guessed_correctly == False:
 
-    guess = int(input("\nEnter your guess: "))
+    while True:
+        try:
+            guess = int(input("\nEnter your guess: "))
+
+            if guess < 1 or guess > 100:
+                print("Please enter a number between 1 and 100.")
+                continue
+
+            break
+
+        except ValueError:
+            print("Invalid input! Please enter a whole number.")
 
     attempts += 1
 
     if guess > secret_number:
         print("Too High!")
+        wrong_guesses += 1
 
     elif guess < secret_number:
         print("Too Low!")
+        wrong_guesses += 1
 
     else:
         print("Congratulations! You guessed correctly!")
         guessed_correctly = True
 
-    remaining_guesses = max_attempts - attempts
+    if wrong_guesses == 3:
+        if secret_number % 2 == 0:
+            print("HINT: The secret number is EVEN.")
+        else:
+            print("HINT: The secret number is ODD.")
 
     if guessed_correctly == False:
-        print("Remaining guesses:", remaining_guesses)
+        print("Remaining guesses:", max_attempts - attempts)
 
 
 if guessed_correctly:
