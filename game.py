@@ -1,5 +1,6 @@
 
 import random
+username = input("Enter your username: ")
 
 secret_number = random.randint(1, 100)
 
@@ -82,3 +83,17 @@ else:
     print("\nGAME OVER!")
     print("You have run out of guesses.")
     print("The correct number was:", secret_number)
+
+
+if guessed_correctly:
+    result = "Won"
+else:
+    result = "Lost"
+
+with open("scores.txt", "a") as file:
+    file.write(
+        f"{username},{difficulty},{attempts},{result}\n"
+    )
+
+print("Your score has been saved!")
+
