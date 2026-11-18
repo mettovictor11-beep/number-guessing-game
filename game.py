@@ -53,3 +53,13 @@ while attempts < max_attempts and guessed_correctly == False:
 
     if guessed_correctly == False:
         print("Remaining guesses:", remaining_guesses)
+
+
+if guessed_correctly:
+    print("\nYou won the game!")
+    print("Total attempts used:", attempts)
+
+else:
+    print("\nGAME OVER!")
+    print("You have run out of guesses.")
+    print("The correct number was:", secret_number)
