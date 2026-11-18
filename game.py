@@ -97,3 +97,37 @@ with open("scores.txt", "a") as file:
 
 print("Your score has been saved!")
 
+
+
+print("\n===== LEADERBOARD =====")
+
+players = []
+
+with open("scores.txt", "r") as file:
+    for line in file:
+        username, difficulty, attempts, result = line.strip().split(",")
+
+        players.append({
+            "username": username,
+            "difficulty": difficulty,
+            "attempts": int(attempts),
+            "result": result
+        })
+
+players.sort(
+    key=lambda player: (
+        player["result"] != "Won",
+        player["attempts"]
+    )
+)
+
+for position, player in enumerate(players, start=1):
+    print(f"\nRank: {position}")
+    print(f"Player: {player['username']}")
+    print(f"Difficulty: {player['difficulty']}")
+    print(f"Attempts: {player['attempts']}")
+    print(f"Result: {player['result']}")
+    print("----------------------")
+
+
+

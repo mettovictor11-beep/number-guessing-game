@@ -1,1 +1,3 @@
 Bobo,3,5,Won
+Estherbel,3,5,Lost
+Victor,3,5,Lost
